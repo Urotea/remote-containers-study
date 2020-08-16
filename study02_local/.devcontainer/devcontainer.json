@@ -23,20 +23,27 @@
 		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
 		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
 		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+		// "python.analysis.diagnosticMode": "workspace",
+		// "python.analysis.typeCheckingMode": "basic",
+		// "python.languageServer": "Pylance",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"ms-python.python"
+		"ms-python.python",
+		// "ms-python.vscode-pylance"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [9000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install -r requirements.txt",
+	"postCreateCommand": "pip install -r requirements.txt",
 
 	// Comment out to connect as root instead.
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+
+	"workspaceMount": "source=[project_dir_path],target=/workspace,type=bind,consistency=delegated",
+	"workspaceFolder": "/workspace"
 }
